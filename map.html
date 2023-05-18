@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>google map</title>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3ibLlgXbJl05AwpK60IBpgx5SfmdtYR0&callback=initMap"></script>
+
+    <style>
+        #map{
+            width: 800px;
+            height: 600px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script >
+        // Initialize and add the map
+        function initMap() {
+            // The location of Uluru
+            const Taiwan = { lat: 23.58, lng: 120.58 };
+            // The map, centered at Uluru
+            const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 4,
+            center: Taiwan,
+            });
+            // The marker, positioned at Uluru
+            const img ="img/placeholder.png"
+            const marker = new google.maps.Marker({
+            position: Taiwan,
+            map: map,
+            title:"台灣寶島",
+            icon:img
+            });
+
+            //資訊備註欄
+            const infowindow = new google.maps.InfoWindow({
+            content: "台灣是個美麗的寶島<br><h1>像顆番薯</h1>",
+            ariaLabel: "Taiwan",
+            });
+            
+            marker.addListener("click", () => {
+                infowindow.open({
+                anchor: marker,
+                map,
+                });
+            });
+
+            }
+
+window.initMap = initMap;
+     const map = new google.maps.Map(document.getElementById("map"),{
+        center:{lat:-34.597, lng:150.644},
+        zoom:8
+     } ) 
+
+
+    </script>
+    
+</body>
+</html>
